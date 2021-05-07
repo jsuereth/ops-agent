@@ -13,5 +13,5 @@ before_install:
 - go get golang.org/x/tools/cmd/goimports
 
 script:
-- go test -mod=mod ./...
 - test -z "$(goimports -l .)"
+- go test -mod=mod ./...
