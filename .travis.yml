@@ -12,6 +12,9 @@ go_import_path: github.com/GoogleCloudPlatform/ops-agent
 before_install:
 - go get golang.org/x/tools/cmd/goimports
 
+before_script:
+- goimports -d .
+- gofmt -l .
+
 script:
-- test -z "$(goimports -l .)"
 - go test -mod=mod ./...
