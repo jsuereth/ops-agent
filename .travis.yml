@@ -13,7 +13,7 @@ before_install:
 - go get golang.org/x/tools/cmd/goimports
 
 before_script:
-- if [[ $(goimports -d .) ]]; then exit 1; fi
+- if [[ $(goimports -l .) ]]; then echo 'Please format the code using "goimports -w ."'; goimport -d .; exit 1; fi
 
 script:
 - go test -mod=mod ./...
