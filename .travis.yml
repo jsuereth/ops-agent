@@ -12,8 +12,6 @@ go_import_path: github.com/GoogleCloudPlatform/ops-agent
 before_install:
 - go get golang.org/x/tools/cmd/goimports
 
-before_script:
-- if [[ $(goimports -l .) ]]; then echo 'Please format the code using "goimports -w ."'; goimport -d .; exit 1; fi
-
 script:
+- if [[ $(goimports -l .) ]]; then goimports -d .; echo 'Failed the goimports format check. Please format the code using "goimports -w ."'; exit 1; fi
 - go test -mod=mod ./...
